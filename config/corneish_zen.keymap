@@ -3,8 +3,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define WORKMAN 0
-#define NUMBER  2
-#define SYMBOL  3
+#define NUMBER  1
+#define SYMBOL  2
 
 / {
   chosen {
