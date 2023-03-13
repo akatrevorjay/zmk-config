@@ -13,9 +13,15 @@
   };
 };
 
-// &mt {
-//   tapping-term-ms = <400>;
-// };
+&mt {
+        tapping-term-ms = <180>;
+        flavor = "balanced";
+};
+
+&lt {
+        tapping-term-ms = <180>;
+        flavor = "balanced";
+};
 
 / {
         keymap {
