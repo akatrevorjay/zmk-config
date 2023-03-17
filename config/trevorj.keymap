@@ -117,7 +117,7 @@ ZMK_BEHAVIOR(dot_morph, mod_morph,
 
 // Ideas:
 // TAB should be GRAVE
-gg
+
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
   &kp TAB    &kp Q         &kp D         &kp R         &kp W         &kp B                    &kp J         &kp F         &kp U         &kp P         &kp SEMI        &kp BSLH
