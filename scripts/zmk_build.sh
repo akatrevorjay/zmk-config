@@ -80,11 +80,11 @@ done
 [[ -z $ZEPHYR_VERSION ]] && ZEPHYR_VERSION="3.5"
 [[ -z $RUNWITH_DOCKER ]] && RUNWITH_DOCKER="true"
 
-[[ -z $OUTPUT_DIR ]] && OUTPUT_DIR="$WINHOME/Downloads"
+[[ -z $OUTPUT_DIR ]] && OUTPUT_DIR="$HOME/git/zmk-config/out"
 [[ -z $LOG_DIR ]] && LOG_DIR="/tmp"
 
-[[ -z $HOST_ZMK_DIR ]] && HOST_ZMK_DIR="$HOME/zmk"
-[[ -z $HOST_CONFIG_DIR ]] && HOST_CONFIG_DIR="$HOME/zmk-config"
+[[ -z $HOST_ZMK_DIR ]] && HOST_ZMK_DIR="$HOME/git/zmk"
+[[ -z $HOST_CONFIG_DIR ]] && HOST_CONFIG_DIR="$HOME/git/zmk-config"
 
 [[ -z $DOCKER_ZMK_DIR ]] && DOCKER_ZMK_DIR="/workspace/zmk"
 [[ -z $DOCKER_CONFIG_DIR ]] && DOCKER_CONFIG_DIR="/workspace/zmk-config"
@@ -93,8 +93,10 @@ done
 
 [[ -z $CLEAR_CACHE ]] && CLEAR_CACHE="false"
 
+RUNWITH_DOCKER=true
 DOCKER_IMG="zmkfirmware/zmk-dev-arm:$ZEPHYR_VERSION"
-DOCKER_BIN="$SUDO podman"
+# DOCKER_BIN="$SUDO podman"
+DOCKER_BIN=docker
 
 # +-------------------------+
 # | AUTOMATE CONFIG OPTIONS |
@@ -111,7 +113,7 @@ if [[ -f config/combos.dtsi ]]
         sort | uniq -c | sort -nr | \
         awk 'NR==1{print $1}' \
     )
-    sed -Ei "/CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY/s/=.+/=$count/" config/*.conf
+    # sed -Ei "/CONFIG_ZMK_COMBO_MAX_COMBOS_PER_KEY/s/=.+/=$count/" config/*.conf
     echo "Setting MAX_COMBOS_PER_KEY to $count"
 
     # update maximum keys per combo
@@ -121,7 +123,7 @@ if [[ -f config/combos.dtsi ]]
         cut -d : -f 1 | uniq -c | sort -nr | \
         awk 'NR==1{print $1}' \
     )
-    sed -Ei "/CONFIG_ZMK_COMBO_MAX_KEYS_PER_COMBO/s/=.+/=$count/" config/*.conf
+    # sed -Ei "/CONFIG_ZMK_COMBO_MAX_KEYS_PER_COMBO/s/=.+/=$count/" config/*.conf
     echo "Setting MAX_KEYS_PER_COMBO to $count"
 fi
 
