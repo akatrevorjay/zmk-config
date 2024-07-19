@@ -4,10 +4,15 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: akatrevorjay
       url-base: https://github.com/akatrevorjay
+    - name: urob
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: akatrevorjay
       revision: main
       import: app/west.yml
+    - name: zmk-helpers
+      remote: urob
+      revision: v2
   self:
     path: config
